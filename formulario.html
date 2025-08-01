@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favoritos | Nadie Como Tú</title>
+  <meta name="description" content="Tus videos favoritos guardados para verlos cuando quieras." />
+  <link rel="stylesheet" href="galerias.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+    }
+    .galeria-header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .galeria-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .galeria-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+    @media (max-width: 992px) {
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .video-card {
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-card video {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .video-card h4 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 1rem;
+    }
+    .video-card p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    .btn-eliminar {
+      margin-top: 0.5rem;
+      background: transparent;
+      border: 1px solid #ff4444;
+      color: #ff4444;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-eliminar:hover {
+      background: #ff4444;
+      color: #000;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #111;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90%;
+    }
+    .modal-content video {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .cerrar {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="galeria-header">
+    <h1>Tus Favoritos</h1>
+    <p>Revive tus clases

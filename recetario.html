@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Meta básicos -->
+<meta name="description" content="Consulta el recetario mensual exclusivo de bienestar y nutrición, disponible solo para usuarios de la comunidad 'Nadie Como Tú'." />
+<meta name="keywords" content="recetario, mensual, salud, recetas, pdf, nutrición, bienestar, Nadie Como Tú" />
+<meta name="author" content="Nadie Como Tú" />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph (para compartir en redes sociales) -->
+<meta property="og:title" content="Recetario Mensual | Nadie Como Tú" />
+<meta property="og:description" content="Explora el PDF actualizado del recetario exclusivo de este mes para mejorar tu bienestar." />
+<meta property="og:image" content="https://tusitio.com/imagenes/recetario-og.jpg" />
+<meta property="og:url" content="https://tusitio.com/recetario.html" />
+<meta property="og:type" content="website" />
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <title>Recetario Mensual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="recetario.css" />
+
+
+</head>
+<body>
+
+     <!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION -->
+     <header class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+          </a>
+        </div>
+        <nav class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="productos.html">Productos</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="live.html">En Vivo</a>
+          <a href="recetario.html">Recetario</a>
+          <a href="favoritos.html" class="nav-link">Favoritos ⭐</a>
+          <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+  
+          <div class="social-icons mobile-socials">
+            <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+              aria-label="Visita nuestro canal de YouTube">
+              <i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+                class="fab fa-instagram"></i></a>
+          </div>
+        </nav>
+        <div class="social-icons desktop-socials">
+          <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+            aria-label="Visita nuestro canal de YouTube">
+            <i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+              class="fab fa-instagram"></i></a>
+        </div>
+   
+        
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+      </div>
+      <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+  
+        function toggleMenu() {
+          navLinks.classList.toggle('open');
+        }
+  
+        hamburger.addEventListener('click', toggleMenu);
+  
+        hamburger.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+          }
+        });
+  
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+          });
+        });
+  
+        document.addEventListener('click', (e) => {
+          const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+          if (!isInside) {
+            navLinks.classList.remove('open');
+          }
+        });
+      </script>
+    </header>
+  
+  
+
+  <section class="recetario-container">
+    <h1>Recetario Mensual</h1>
+    <p>Consulta aquí el PDF más reciente del mes.</p>
+
+    <iframe id="pdfFrame" allow="fullscreen"></iframe>
+
+    <a href="index.html" class="volver-btn">Volver a Inicio</a>
+  </section>
+
+  <script>
+    const SHEET_ID = "1r5r72BFZWWFhOfloz4aLdyV8gVpcf5JNepzhVHsGxto"; // ← Usa tu ID real
+    const SHEET_NAME = "Pdf Pagina Recetario Mensual";
+
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+    fetch(url)
+      .then(res => res.text())
+      .then(data => {
+        const json = JSON.parse(data.substr(47).slice(0, -2));
+        const id = json.table.rows[1].c[1].v; // Celda B2
+        const embedUrl = `https://drive.google.com/file/d/${id}/preview`;
+        document.getElementById("pdfFrame").src = embedUrl;
+      })
+      .catch(err => {
+        console.error("Error al cargar el PDF:", err);
+        document.getElementById("pdfFrame").outerHTML = "<p style='color:red;'>No se pudo cargar el PDF. Intenta más tarde.</p>";
+      });
+  </script>
+
+</body>
+</html>

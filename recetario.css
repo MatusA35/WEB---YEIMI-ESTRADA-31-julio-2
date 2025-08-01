@@ -1,0 +1,273 @@
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+
+
+
+
+/* BARRA DE NAVEGACION *//* BARRA DE NAVEGACION *//* BARRA DE NAVEGACION */
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  height: 70px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background:#000000;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 1s ease;
+}
+
+.logo-img {
+  height: 90px;
+  object-fit: contain;
+  margin-top: 50px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  position: relative;
+  text-decoration: none;
+  color: #f7f5f4;
+  font-weight: 500;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+/* Línea base, oculta al inicio */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background-color: #ff00e6;
+  transition: width 0.35s ease, left 0.35s ease;
+  border-radius: 1px;
+}
+
+/* Al hover, la línea crece desde el centro a todo el ancho */
+.nav-links a:hover {
+  color: #ff00f7;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.2rem;
+}
+
+
+.social-icons a {
+  color: #f7f5f4;
+  transition: color 0.3s, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff00f7;
+  transform: scale(1.2);
+}
+.nav-links {
+  position: relative;
+  overflow-x: hidden;
+}
+
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 25px;
+  height: 20px;
+  justify-content: space-between;
+  background: transparent; /* <- Asegura que no tenga fondo */
+  border: none;            /* <- Sin borde */
+  padding: 0;              /* <- Sin padding extra */
+}
+
+.hamburger div {
+  height: 3px;
+  background-color: #f7f5f4; /* Cambiado a blanco */
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 50%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 5rem 1.5rem;
+    gap: 1.2rem;
+    transition: right 0.4s ease-in-out;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links a {
+    color: #f7f5f4;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #ff00f7;
+  }
+
+  .extra-btn {
+    background-color: #f7f5f4;
+    color: #f7f5f4;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+
+  .extra-btn:hover {
+    background-color: #b2996d;
+  }
+
+  .social-icons.mobile-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .social-icons.mobile-socials a {
+    color: #f7f5f4;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+
+  .hamburger {
+    display: flex;
+    z-index: 1001;
+  }
+}
+/* Íconos sociales de escritorio (visibles en desktop) */
+.desktop-socials {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Íconos sociales versión móvil ocultos por defecto */
+.mobile-socials {
+  display: none;
+  margin-top: 2rem;
+  justify-content: flex-start;
+  padding-left: 5px;
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  /* Oculta los íconos sociales de escritorio */
+  .desktop-socials {
+    display: none;
+  }
+
+  /* Muestra los íconos sociales dentro del menú móvil */
+  .mobile-socials {
+    display: flex;
+  }
+
+  .mobile-socials a {
+    color: #f7f5f4;
+    font-size: 1.2rem;
+  }
+}
+/* BARRA DE NAVEGACION */
+
+
+
+
+
+
+
+.recetario-container {
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #ff00e1;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.pdf-wrapper {
+  position: relative;
+  padding-bottom: 125%; /* altura responsive */
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 0, 224, 0.3);
+}
+
+.pdf-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.volver-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #ff00e1;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.volver-btn:hover {
+  background-color: #e600c7;
+}

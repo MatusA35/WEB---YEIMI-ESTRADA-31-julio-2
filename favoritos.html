@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis Favoritos | Nadie Como Tú</title>
+  <link rel="stylesheet" href="favoritos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+    }
+    .galeria-header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .galeria-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .galeria-header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+    @media (max-width: 992px) {
+      .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .video-card {
+      background: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-card video {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .video-card h4 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 1rem;
+    }
+    .video-card p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #111;
+      padding: 1rem;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90%;
+    }
+    .modal-content video {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .cerrar {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+      <!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION -->
+      <header class="navbar">
+        <div class="container">
+          <div class="logo">
+            <a href="index.html">
+              <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+            </a>
+          </div>
+          <nav class="nav-links" id="nav-links">
+            <a href="productos.html">Productos</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="live.html">En Vivo</a>
+            <a href="recetario.html">Recetario</a>
+            <a href="favoritos.html" class="nav-link">Favoritos ⭐</a>
+            <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+  
+            <div class="social-icons mobile-socials">
+              <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+                aria-label="Visita nuestro canal de YouTube">
+                <i class="fab fa-youtube"></i></a>
+              <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+                  class="fab fa-instagram"></i></a>
+            </div>
+          </nav>
+          <div class="social-icons desktop-socials">
+            <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+              aria-label="Visita nuestro canal de YouTube">
+              <i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+                class="fab fa-instagram"></i></a>
+          </div>
+     
+          
+          <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+            <div></div>
+            <div></div>
+            <div></div>
+          </button>
+        </div>
+        <script>
+          const hamburger = document.getElementById('hamburger');
+          const navLinks = document.getElementById('nav-links');
+  
+          function toggleMenu() {
+            navLinks.classList.toggle('open');
+          }
+  
+          hamburger.addEventListener('click', toggleMenu);
+  
+          hamburger.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              toggleMenu();
+            }
+          });
+  
+          document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+              navLinks.classList.remove('open');
+            });
+          });
+  
+          document.addEventListener('click', (e) => {
+            const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+            if (!isInside) {
+              navLinks.classList.remove('open');
+            }
+          });
+        </script>
+      </header>
+
+
+
+      
+  <div class="galeria-header">
+    <h1>Mis Videos Favoritos</h1>
+    <p>Aquí puedes ver los videos que marcaste como favoritos. ¡Disfrútalos nuevamente!</p>
+  </div>
+
+  <div class="video-grid" id="videoGrid"></div>
+
+  <div class="modal" id="modalVideo">
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+    <div class="modal-content">
+      <video id="videoModal" controls autoplay></video>
+    </div>
+  </div>
+
+  <script>
+    const videoGrid = document.getElementById("videoGrid");
+    const usuario_id = sessionStorage.getItem("logueado");
+
+    async function cargarFavoritos() {
+      if (!usuario_id) return;
+
+      const url = `https://script.google.com/macros/s/AKfycbx9Y-7VSP2lcdZjckKc6LywNRUsakU1n5yYSjxFcUipBzjkLL0WXTktp_2mYK2kwZGZNA/exec?usuario_id=${usuario_id}`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.favoritos && data.favoritos.length > 0) {
+          data.favoritos.forEach(fav => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `
+              <video src="${fav.videoSrc}" muted onclick="abrirModal('${fav.videoSrc}')"></video>
+              <h4>${fav.titulo}</h4>
+              <p>${fav.descripcion}</p>
+            `;
+            videoGrid.appendChild(card);
+          });
+        } else {
+          videoGrid.innerHTML = "<p style='grid-column: span 5; text-align:center;'>No tienes favoritos guardados.</p>";
+        }
+      } catch (error) {
+        console.error("Error al cargar favoritos:", error);
+        videoGrid.innerHTML = "<p style='color:red; text-align:center;'>Error al cargar tus favoritos.</p>";
+      }
+    }
+
+    function abrirModal(src) {
+      const modal = document.getElementById("modalVideo");
+      const video = document.getElementById("videoModal");
+      video.src = src;
+      modal.style.display = "flex";
+    }
+
+    function cerrarModal() {
+      const modal = document.getElementById("modalVideo");
+      const video = document.getElementById("videoModal");
+      modal.style.display = "none";
+      video.pause();
+      video.src = "";
+    }
+
+    cargarFavoritos();
+  </script>
+</body>
+</html>

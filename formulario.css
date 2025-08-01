@@ -1,0 +1,417 @@
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #202020;
+  }
+
+
+
+
+
+
+/* BARRA DE NAVEGACION *//* BARRA DE NAVEGACION *//* BARRA DE NAVEGACION */
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    height: 70px;
+  }
+  
+  .navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background:#000000;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease;
+  }
+  
+  .logo-img {
+    height: 90px;
+    object-fit: contain;
+    margin-top: 50px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: #f7f5f4;
+    font-weight: 500;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Línea base, oculta al inicio */
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    background-color: #ff00e6;
+    transition: width 0.35s ease, left 0.35s ease;
+    border-radius: 1px;
+  }
+  
+  /* Al hover, la línea crece desde el centro a todo el ancho */
+  .nav-links a:hover {
+    color: #ff00f7;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* SOCIAL ICONS */
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  
+  .social-icons a {
+    color: #f7f5f4;
+    transition: color 0.3s, transform 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #ff00f7;
+    transform: scale(1.2);
+  }
+  
+  
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 25px;
+    height: 20px;
+    justify-content: space-between;
+    background: transparent; /* <- Asegura que no tenga fondo */
+    border: none;            /* <- Sin borde */
+    padding: 0;              /* <- Sin padding extra */
+  }
+  
+  .hamburger div {
+    height: 3px;
+    background-color: #f7f5f4; /* Cambiado a blanco */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 50%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 5rem 1.5rem;
+      gap: 1.2rem;
+      transition: right 0.4s ease-in-out;
+      z-index: 999;
+    }
+  
+    .nav-links.open {
+      right: 0;
+    }
+  
+    .nav-links a {
+      color: #f7f5f4;
+      font-weight: 500;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+  
+    .nav-links a:hover {
+      color: #ff00f7;
+    }
+  
+    .extra-btn {
+      background-color: #f7f5f4;
+      color: #f7f5f4;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+  
+    .extra-btn:hover {
+      background-color: #b2996d;
+    }
+  
+    .social-icons.mobile-socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+  
+    .social-icons.mobile-socials a {
+      color: #f7f5f4;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+  
+    .hamburger {
+      display: flex;
+      z-index: 1001;
+    }
+  }
+  /* Íconos sociales de escritorio (visibles en desktop) */
+  .desktop-socials {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Íconos sociales versión móvil ocultos por defecto */
+  .mobile-socials {
+    display: none;
+    margin-top: 2rem;
+    justify-content: flex-start;
+    padding-left: 5px;
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media screen and (max-width: 768px) {
+    /* Oculta los íconos sociales de escritorio */
+    .desktop-socials {
+      display: none;
+    }
+  
+    /* Muestra los íconos sociales dentro del menú móvil */
+    .mobile-socials {
+      display: flex;
+    }
+  
+    .mobile-socials a {
+      color: #f7f5f4;
+      font-size: 1.2rem;
+    }
+  }
+  /* BARRA DE NAVEGACION */
+
+
+
+
+
+
+/* CONTENEDOR PRINCIPAL */
+.login-video-section {
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    padding: 1rem;
+    background: #000; /* fallback */
+  }
+  
+  /* VIDEO DE FONDO */
+  .login-background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  
+  /* OVERLAY OSCURO */
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+  
+  /* FORMULARIO */
+  .login-container {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    color: #fff;
+  }
+  
+  /* LOGO (opcional) */
+  .login-logo img {
+    max-width: 180px;
+    margin-bottom: 2rem;
+  }
+  
+  /* TÍTULO DEL FORMULARIO */
+  .login-container h2 {
+    color: #ffffff;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  
+  /* CAMPOS DE ENTRADA */
+  .login-form input {
+    width: 91%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    outline: none;
+    font-size: 1rem;
+    background: #ffffff;
+    transition: all 0.3s ease;
+  }
+  
+  /* BOTÓN DE ENVÍO */
+  .btn-login {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-login:hover {
+    background-color: #ff00f7;
+  }
+  
+  /* ENLACE DE REGISTRO O INFO */
+  .login-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 2rem 1.5rem;
+    }
+  
+    .login-logo img {
+      max-width: 140px;
+      margin-bottom: 1rem;
+    }
+  
+    .login-container h2 {
+      font-size: 1.4rem;
+    }
+  }
+  
+  /* Si usas campo con botón toggle para password */
+  /* (no obligatorio si no tienes contraseña) */
+  .password-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .password-container input {
+    width: 100%;
+    padding-right: 2.8rem;
+    box-sizing: border-box;
+  }
+  
+  #togglePassword {
+    position: absolute;
+    top: 40%;
+    right: 0.8rem;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #66666669;
+    font-size: 1.3rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #togglePassword:focus {
+    outline: none;
+  }
+  
+  /* Estilo para enlace whatsapp minimalista */
+  .whatsapp-link-minimal {
+    color: #ff00f7;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    font-weight: 400;
+    padding: 2px 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .whatsapp-link-minimal:hover {
+    color: #ffffff;
+  }
+  
+
+
+
+
+
+
+
+/* WHATSAPP FLOAT BUTTON *//* WHATSAPP FLOAT BUTTON *//* WHATSAPP FLOAT BUTTON */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* ← redondo perfecto */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+/* WHATSAPP FLOAT BUTTON *//* WHATSAPP FLOAT BUTTON *//* WHATSAPP FLOAT BUTTON */

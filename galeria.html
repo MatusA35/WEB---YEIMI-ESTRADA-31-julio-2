@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería de Clases | Momentos Nadie Como Tú</title>
+   <link rel="stylesheet" href="galerias.css" />
+  <meta name="description" content="Explora nuestras clases pasadas. Vive la experiencia Nadie Como Tú desde donde estés." />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+</head>
+
+
+<body>
+
+   <!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION -->
+   <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+        </a>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="productos.html">Productos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="live.html">En Vivo</a>
+        <a href="recetario.html">Recetario</a>
+        <a href="favoritos.html" class="nav-link">Favoritos ⭐</a>
+        <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+
+        <div class="social-icons mobile-socials">
+          <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+            aria-label="Visita nuestro canal de YouTube">
+            <i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+              class="fab fa-instagram"></i></a>
+        </div>
+      </nav>
+      <div class="social-icons desktop-socials">
+        <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+          aria-label="Visita nuestro canal de YouTube">
+          <i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+            class="fab fa-instagram"></i></a>
+      </div>
+ 
+      
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+    </div>
+    <script>
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+
+      function toggleMenu() {
+        navLinks.classList.toggle('open');
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+
+      hamburger.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+        if (!isInside) {
+          navLinks.classList.remove('open');
+        }
+      });
+    </script>
+  </header>
+
+
+
+  
+
+  <div class="galeria-header">
+    <h1>Galería de Clases</h1>
+    <p>Explora las clases anteriores, revive cada momento y agrega tus favoritas para verlas después.</p>
+  </div>
+
+  <div class="video-grid" id="videoGrid"></div>
+
+  <div class="modal" id="modalVideo">
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+    <div class="modal-content">
+      <video id="videoModal" controls autoplay></video>
+    </div>
+  </div>
+
+  <script>
+const usuario_id = sessionStorage.getItem("usuario_id");
+
+if (!usuario_id) {
+  alert("Debes iniciar sesión para agregar favoritos");
+  return;
+}
+
+
+    const clases = [
+      { titulo: 'Clase del 10 de Julio', descripcion: 'Full Body con Yeimi', src: 'videos/clase1.mp4' },
+      { titulo: 'Clase del 12 de Julio', descripcion: 'FlexiStretch con Leslie', src: 'videos/clase2.mp4' },
+      { titulo: 'Clase del 15 de Julio', descripcion: 'Barre con Leslie', src: 'videos/clase3.mp4' },
+      { titulo: 'Clase del 18 de Julio', descripcion: 'Zumba con Ana', src: 'videos/clase4.mp4' },
+      { titulo: 'Clase del 20 de Julio', descripcion: 'Full Body con Ariel', src: 'videos/clase5.mp4' },
+      { titulo: 'Clase del 22 de Julio', descripcion: 'Estiramiento Total', src: 'videos/clase6.mp4' }
+      // Puedes seguir agregando aquí automáticamente desde horarios en el futuro
+    ];
+
+    const grid = document.getElementById('videoGrid');
+    clases.forEach(clase => {
+      const card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerHTML = `
+        <video src="${clase.src}" muted onclick="abrirModal('${clase.src}')"></video>
+        <h4>${clase.titulo}</h4>
+        <p>${clase.descripcion}</p>
+        <button class="btn-favorito" onclick="guardarFavorito('${clase.titulo}', '${clase.descripcion}', '${clase.src}')">★ Favorito</button>
+      `;
+      grid.appendChild(card);
+    });
+
+    function abrirModal(videoSrc) {
+      document.getElementById('videoModal').src = videoSrc;
+      document.getElementById('modalVideo').style.display = 'flex';
+    }
+
+    function cerrarModal() {
+      document.getElementById('modalVideo').style.display = 'none';
+      document.getElementById('videoModal').src = '';
+    }
+
+    function guardarFavorito(titulo, descripcion, videoSrc) {
+      fetch("https://script.google.com/macros/s/AKfycbzrqYB0DwNvaWOYxjCjlomkSJvd2R0fgfoM5lUXm3wYK37ULDKxihRugMjeMp5tZItb4w/exec", {
+        method: "POST",
+        body: JSON.stringify({
+          tipo: "guardarFavorito",
+          usuario_id: usuario_id,
+          favorito: { titulo, descripcion, videoSrc }
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          alert("Agregado a favoritos");
+        } else {
+          alert("Este video ya está en tus favoritos");
+        }
+      })
+      .catch(err => {
+        alert("Error al guardar favorito");
+        console.error(err);
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clases en Vivo | Nadie Como Tú</title>
+  <meta name="description" content="Accede a las clases en vivo de Barre, Full Body, Zumba y más. Transmisiones vía Zoom según horarios establecidos.">
+  <meta name="keywords" content="clases en vivo, Zoom, fitness online, ejercicio desde casa, entrenamiento guiado, horarios de clases, Nadie Como Tú">
+  <meta name="author" content="Nadie Como Tú">
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      height: 100%;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.439);
+      color: white;
+    }
+    .video-bg, .image-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.3);
+    }
+    .center-wrapper {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+    .next-class {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+    .btn-regresar {
+      margin-top: 2rem;
+      background-color: #ff00e6;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    #zoomContainer {
+      height: 100vh;
+      width: 100%;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Fondo: puede usar imagen o video -->
+  <img src="imagenes/yeimi.webp" alt="Fondo" class="image-bg" />
+
+  <div id="zoomContainer"></div>
+  <div class="center-wrapper" id="mensajeContainer">
+    <h1>No hay clases en vivo en este momento</h1>
+    <p class="next-class" id="siguienteClase"></p>
+    <a href="index.html" class="btn-regresar">Volver al Inicio</a>
+  </div>
+
+  <!-- SDK Zoom -->
+  <script src="https://source.zoom.us/2.19.0/lib/vendor/react.min.js"></script>
+  <script src="https://source.zoom.us/2.19.0/lib/vendor/react-dom.min.js"></script>
+  <script src="https://source.zoom.us/2.19.0/lib/vendor/redux.min.js"></script>
+  <script src="https://source.zoom.us/2.19.0/lib/vendor/redux-thunk.min.js"></script>
+  <script src="https://source.zoom.us/2.19.0/lib/vendor/lodash.min.js"></script>
+  <script src="https://source.zoom.us/zoom-meeting-2.19.0.min.js"></script>
+
+  <script>
+    const horarios = {
+      lunes: [
+        { hora: "06:20", clase: "Clase con Ariel", id: "1234567890", pass: "1111" },
+        { hora: "18:00", clase: "Clase con Yeimi", id: "1111222233", pass: "2222" }
+      ],
+      martes: [
+        { hora: "08:00", clase: "Full body con Yeimi", id: "4444555566", pass: "3333" },
+        { hora: "18:00", clase: "Brazo y abdomen", id: "7777888899", pass: "4444" }
+      ],
+      miercoles: [
+        { hora: "06:20", clase: "Clase con Ariel", id: "9999000011", pass: "5555" },
+        { hora: "18:00", clase: "Barre con Leslie", id: "8888777766", pass: "6666" }
+      ],
+      jueves: [
+        { hora: "08:00", clase: "Brazo y Abs", id: "3333444455", pass: "7777" },
+        { hora: "18:00", clase: "Full body silla", id: "6666555544", pass: "8888" }
+      ],
+      viernes: [
+        { hora: "06:20", clase: "Clase con Ariel", id: "2222333344", pass: "9999" },
+        { hora: "08:00", clase: "Clase con Leslie", id: "0000111122", pass: "0000" }
+      ]
+    };
+
+    function getClaseActual() {
+      const ahora = new Date();
+      const dia = ahora.toLocaleDateString('es-ES', { weekday: 'long' }).toLowerCase();
+      const minutosAhora = ahora.getHours() * 60 + ahora.getMinutes();
+      const clasesHoy = horarios[dia] || [];
+
+      for (let clase of clasesHoy) {
+        const [h, m] = clase.hora.split(":" ).map(Number);
+        const claseMin = h * 60 + m;
+        if (minutosAhora >= claseMin && minutosAhora < claseMin + 60) return clase;
+      }
+      return null;
+    }
+
+    function getSiguienteClase() {
+      const ahora = new Date();
+      const dias = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
+      const hoyIdx = ahora.getDay();
+      const minutosAhora = ahora.getHours() * 60 + ahora.getMinutes();
+
+      for (let i = 0; i < 7; i++) {
+        const idx = (hoyIdx + i) % 7;
+        const nombreDia = dias[idx];
+        const clases = horarios[nombreDia] || [];
+        for (let clase of clases) {
+          const [h, m] = clase.hora.split(":" ).map(Number);
+          const claseMin = h * 60 + m;
+          if (i > 0 || claseMin > minutosAhora) {
+            const fecha = new Date();
+            fecha.setDate(ahora.getDate() + i);
+            return `${clase.clase} - ${nombreDia.charAt(0).toUpperCase() + nombreDia.slice(1)} a las ${clase.hora}`;
+          }
+        }
+      }
+      return "";
+    }
+
+    function mostrarZoom(clase) {
+      document.getElementById("mensajeContainer").style.display = "none";
+      document.getElementById("zoomContainer").style.display = "block";
+
+      ZoomMtg.preLoadWasm();
+      ZoomMtg.prepareJssdk();
+      ZoomMtg.init({
+        leaveUrl: "https://tuweb.com/",
+        success: function () {
+          ZoomMtg.join({
+            sdkKey: "SDK_KEY",
+            signature: "SIGNATURE",
+            meetingNumber: clase.id,
+            password: clase.pass,
+            userName: "Invitado",
+            success: () => console.log("Conectado a Zoom"),
+            error: err => console.error(err)
+          });
+        },
+        error: err => console.error(err)
+      });
+    }
+
+    const claseActual = getClaseActual();
+    if (claseActual) {
+      mostrarZoom(claseActual);
+    } else {
+      const siguiente = getSiguienteClase();
+      document.getElementById("siguienteClase").textContent = siguiente
+        ? `Próxima clase: ${siguiente}`
+        : "No hay clases programadas.";
+    }
+  </script>
+</body>
+</html>

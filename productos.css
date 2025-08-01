@@ -1,0 +1,550 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background-color: #202020;
+  }
+
+
+
+/* BARRA DE NAVEGACION *//* BARRA DE NAVEGACION *//* BARRA DE NAVEGACION */
+/* CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    height: 70px;
+  }
+  
+  .navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background:#000000;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease;
+  }
+  
+  .logo-img {
+    height: 90px;
+    object-fit: contain;
+    margin-top: 50px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: #f7f5f4;
+    font-weight: 500;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Línea base, oculta al inicio */
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    background-color: #ff00e6;
+    transition: width 0.35s ease, left 0.35s ease;
+    border-radius: 1px;
+  }
+  
+  /* Al hover, la línea crece desde el centro a todo el ancho */
+  .nav-links a:hover {
+    color: #ff00f7;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* SOCIAL ICONS */
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+  
+  
+  .social-icons a {
+    color: #f7f5f4;
+    transition: color 0.3s, transform 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #ff00f7;
+    transform: scale(1.2);
+  }
+  
+  
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 25px;
+    height: 20px;
+    justify-content: space-between;
+    background: transparent; /* <- Asegura que no tenga fondo */
+    border: none;            /* <- Sin borde */
+    padding: 0;              /* <- Sin padding extra */
+  }
+  
+  .hamburger div {
+    height: 3px;
+    background-color: #f7f5f4; /* Cambiado a blanco */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 50%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 5rem 1.5rem;
+      gap: 1.2rem;
+      transition: right 0.4s ease-in-out;
+      z-index: 999;
+    }
+  
+    .nav-links.open {
+      right: 0;
+    }
+  
+    .nav-links a {
+      color: #f7f5f4;
+      font-weight: 500;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+  
+    .nav-links a:hover {
+      color: #ff00f7;
+    }
+  
+    .extra-btn {
+      background-color: #f7f5f4;
+      color: #f7f5f4;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+  
+    .extra-btn:hover {
+      background-color: #b2996d;
+    }
+  
+    .social-icons.mobile-socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+  
+    .social-icons.mobile-socials a {
+      color: #f7f5f4;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+  
+    .hamburger {
+      display: flex;
+      z-index: 1001;
+    }
+  }
+  /* Íconos sociales de escritorio (visibles en desktop) */
+  .desktop-socials {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Íconos sociales versión móvil ocultos por defecto */
+  .mobile-socials {
+    display: none;
+    margin-top: 2rem;
+    justify-content: flex-start;
+    padding-left: 5px;
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media screen and (max-width: 768px) {
+    /* Oculta los íconos sociales de escritorio */
+    .desktop-socials {
+      display: none;
+    }
+  
+    /* Muestra los íconos sociales dentro del menú móvil */
+    .mobile-socials {
+      display: flex;
+    }
+  
+    .mobile-socials a {
+      color: #f7f5f4;
+      font-size: 1.2rem;
+    }
+  }
+  /* BARRA DE NAVEGACION */
+
+
+
+
+ 
+  /* SECCIÓN PRODUCTOS*/  /* SECCIÓN PRODUCTOS*/  /* SECCIÓN PRODUCTOS*/
+
+body {
+   font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  color: #f7f5f4;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.2);
+}
+
+.vinagres-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: transparent;
+}
+
+.vinagres-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ff00f7;
+}
+
+.vinagres-section .descripcion {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.producto {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.producto:hover {
+  transform: scale(1.03);
+}
+
+.producto img {
+  width: 100%;
+  display: block;
+}
+
+.producto-content {
+  padding: 1rem;
+  text-align: center;
+}
+
+.producto-content h3 {
+  color: #f7f5f4;
+  font-size: 1.3rem;
+  margin: 0.5rem 0;
+}
+
+.producto-content p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.precio {
+  font-weight: bold;
+  color: #b2996d;
+  margin: 0.5rem 0;
+}
+
+.producto-content a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background-color: #ff00f7;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.producto-content a:hover {
+  background-color: #5d5d5d;
+}
+  /* SECCIÓN PRODUCTOS*/  /* SECCIÓN PRODUCTOS*/  /* SECCIÓN PRODUCTOS*/  /* SECCIÓN PRODUCTOS*/
+
+
+.beneficios-vinagre {
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 2rem;
+  color: white;
+  text-align: center;
+  background-color: #000; /* fallback */
+}
+
+.beneficios-vinagre h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #ff00d4;
+}
+
+.grid-beneficios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.grid-beneficios .item {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 0, 212, 0.3);
+}
+
+.grid-beneficios i {
+  font-size: 2rem;
+  color: #ff00d4;
+  margin-bottom: 1rem;
+}
+
+.grid-beneficios h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.grid-beneficios p {
+  font-size: 0.95rem;
+  color: #eaeaea;
+}
+
+
+
+
+
+.promociones-especiales {
+  background-color: #000;
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.promociones-especiales h2 {
+  color: #ff00d4;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.promociones-especiales .subtitulo {
+  font-size: 1.1rem;
+  color: #eaeaea;
+  margin-bottom: 2rem;
+}
+
+.grid-combos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.combo-card {
+  background-color: #111;
+  border: 1px solid #ff00d4;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(255, 0, 212, 0.2);
+}
+
+.combo-card h3 {
+  color: #ff00d4;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.combo-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.combo-card .precio {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00ffae;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.combo-card .envio-incluido {
+  font-size: 0.9rem;
+  color: #a3f0e0;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+
+
+
+
+
+
+.precios-envios {
+  background-color: #000;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.precios-envios h2 {
+  color: #ff00d4;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.precios-envios .subtitulo {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.texto-precios h3 {
+  font-size: 1.3rem;
+  color: #ff00d4;
+  margin-top: 1.5rem;
+}
+
+.texto-precios p {
+  font-size: 1rem;
+  color: #eee;
+  line-height: 1.6;
+  margin: 0.5rem 0 1.5rem;
+}
+
+
+
+
+
+
+
+
+/* FOOTER*//* FOOTER*//* FOOTER*//* FOOTER*/
+ footer {
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+.site-footer {
+  background-color: #1a1a1a;
+  color: #f7f5f4;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-logo img {
+  width: 140px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1); /* Hace el logo blanco si es oscuro */
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.footer-social a {
+  color: #f7f5f4;
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: #b2996d;
+}
+
+.footer-copy {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+/* FOOTER*//* FOOTER*//* FOOTER*//* FOOTER*/
+
+
+
+
+
+/* WHATSAPP FLOAT BUTTON *//* WHATSAPP FLOAT BUTTON *//* WHATSAPP FLOAT BUTTON */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%; /* ← redondo perfecto */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+/* WHATSAPP FLOAT BUTTON *//* WHATSAPP FLOAT BUTTON *//* WHATSAPP FLOAT BUTTON */

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Título de la página -->
+  <title>Vinagres Naturales | Productos Artesanales - Nadie Como Tú</title>
+
+  <!-- Descripción para SEO -->
+  <meta name="description" content="Descubre nuestra línea de vinagres 100% naturales y artesanales. Mejora tu salud con ingredientes frescos, sin aditivos ni conservantes. Envíos a todo el país.">
+
+  <!-- Palabras clave -->
+  <meta name="keywords" content="vinagre natural, vinagre artesanal, productos saludables, vinagre de manzana, vinagre de piña, vinagre de coco, vinagre de jamaica, salud digestiva, productos naturales, Guatemala">
+
+  <!-- Autor -->
+  <meta name="author" content="Nadie Como Tú">
+
+  <!-- Favicon -->
+  <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
+
+  <!-- Estilo principal -->
+  <link rel="stylesheet" href="productos.css">
+
+  <!-- Tipografía -->
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Meta para redes sociales (Open Graph / Facebook) -->
+  <meta property="og:title" content="Vinagres Naturales | Nadie Como Tú">
+  <meta property="og:description" content="Elige salud con vinagres artesanales 100% naturales. Sin conservantes. Compra fácil por WhatsApp.">
+  <meta property="og:image" content="https://tuweb.com/imagenes/og-vinagre.jpg"> <!-- cambia por tu imagen real -->
+  <meta property="og:url" content="https://tuweb.com/productos.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vinagres Naturales | Nadie Como Tú">
+  <meta name="twitter:description" content="Explora nuestros vinagres naturales hechos artesanalmente para cuidar tu salud.">
+  <meta name="twitter:image" content="https://tuweb.com/imagenes/og-vinagre.jpg"> <!-- cambia por tu imagen real -->
+
+  <!-- Seguridad (opcional) -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+
+
+<body>
+   <!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION -->
+   <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+        </a>
+      </div>
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="productos.html">Productos</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="live.html">En Vivo</a>
+        <a href="recetario.html">Recetario</a>
+        <a href="favoritos.html" class="nav-link">Favoritos ⭐</a>
+        <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+
+        <div class="social-icons mobile-socials">
+          <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+            aria-label="Visita nuestro canal de YouTube">
+            <i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+              class="fab fa-instagram"></i></a>
+        </div>
+      </nav>
+      <div class="social-icons desktop-socials">
+        <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+          aria-label="Visita nuestro canal de YouTube">
+          <i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+            class="fab fa-instagram"></i></a>
+      </div>
+ 
+      
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+    </div>
+    <script>
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+
+      function toggleMenu() {
+        navLinks.classList.toggle('open');
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+
+      hamburger.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+        if (!isInside) {
+          navLinks.classList.remove('open');
+        }
+      });
+    </script>
+  </header>
+
+
+
+    <section class="vinagres-section">
+
+        <h2>Vinagres Naturales</h2>
+        <p class="descripcion">Nuestra línea de vinagres 100% naturales está elaborada artesanalmente con ingredientes
+          seleccionados, sin aditivos ni conservantes. Descubre el sabor y los beneficios del poder natural en cada
+          gota.</p>
+      
+        <div class="productos-grid">
+          <div class="producto">
+            <a href="https://wa.me/50212345678">
+              <img src="productos/BOTELLA 1.webp" alt="Vinagre de Manzana">
+            </a>
+            <div class="producto-content">
+              <h3>Vinagre de Manzana</h3>
+              <p>Ideal para digestión y desintoxicación. Hecho 100% natural.</p>
+              <p class="precio">Q35.00</p>
+              <a href="https://wa.me/50212345678">Comprar por WhatsApp</a>
+            </div>
+          </div>
+          <div class="producto">
+            <a href="https://wa.me/50212345678">
+              <img src="productos/BOTELLA 1.webp" alt="Vinagre de Piña">
+            </a>
+            <div class="producto-content">
+              <h3>Vinagre de Piña</h3>
+              <p>Refrescante y lleno de enzimas naturales para tu salud.</p>
+              <p class="precio">Q35.00</p>
+              <a href="https://wa.me/50212345678">Comprar por WhatsApp</a>
+            </div>
+          </div>
+          <div class="producto">
+            <a href="https://wa.me/50212345678">
+              <img src="productos/BOTELLA 1.webp" alt="Vinagre de Jamaica">
+            </a>
+            <div class="producto-content">
+              <h3>Vinagre de Jamaica</h3>
+              <p>Rico en antioxidantes, ideal para refrescos y ensaladas.</p>
+              <p class="precio">Q35.00</p>
+              <a href="https://wa.me/50212345678">Comprar por WhatsApp</a>
+            </div>
+          </div>
+          <div class="producto">
+            <a href="https://wa.me/50212345678">
+              <img src="productos/BOTELLA 1.webp" alt="Vinagre de Coco">
+            </a>
+            <div class="producto-content">
+              <h3>Vinagre de Coco</h3>
+              <p>Suave y versátil, perfecto para cocina y salud intestinal.</p>
+              <p class="precio">Q35.00</p>
+              <a href="https://wa.me/50212345678">Comprar por WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+<section class="beneficios-vinagre" style="background-image: url('imagenes/BG\ 1.jpg');">
+  <h2><i class="#"></i> 7 Beneficios Comprobados</h2>
+  <div class="grid-beneficios">
+    <div class="item">
+      <i class="fas fa-tint"></i>
+      <h3>Desintoxicación y limpieza</h3>
+      <p>Ayuda a eliminar toxinas, estimula el hígado y mejora la digestión.</p>
+    </div>
+    <div class="item">
+      <i class="fas fa-bone"></i>
+      <h3>Alivio de inflamación</h3>
+      <p>Reduce molestias articulares gracias a la cúrcuma y jengibre.</p>
+    </div>
+    <div class="item">
+      <i class="fas fa-wind"></i>
+      <h3>Digestión saludable</h3>
+      <p>Previene gases y mejora la función gástrica con efecto calmante.</p>
+    </div>
+    <div class="item">
+      <i class="fas fa-syringe"></i>
+      <h3>Control de azúcar</h3>
+      <p>Ayuda a estabilizar los niveles de glucosa en sangre naturalmente.</p>
+    </div>
+    <div class="item">
+      <i class="fas fa-fire-alt"></i>
+      <h3>Acelera el metabolismo</h3>
+      <p>Estimula la quema de grasa y controla el apetito.</p>
+    </div>
+    <div class="item">
+      <i class="fas fa-shield-virus"></i>
+      <h3>Refuerza defensas</h3>
+      <p>Antioxidantes naturales para fortalecer tu sistema inmune.</p>
+    </div>
+    <div class="item">
+      <i class="fas fa-heart"></i>
+      <h3>Mejora cardiovascular</h3>
+      <p>Reduce el colesterol LDL y protege tu corazón.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="promociones-especiales">
+  <h2><i class="#r"></i> Promociones Especiales</h2>
+  <p class="subtitulo">Combos exclusivos con envío GRATIS a todo el país</p>
+
+  <div class="grid-combos">
+    <div class="combo-card">
+      <h3>Trío Saludable</h3>
+      <p>1 Manzana 500 ml<br>1 Cúrcuma 500 ml<br>1 Jengibre 500 ml</p>
+      <span class="precio">Q215.00</span>
+      <span class="envio-incluido">Envío incluido</span>
+    </div>
+
+    <div class="combo-card">
+      <h3>Dúo de Manzana</h3>
+      <p>2 botellas de 1,100 ml</p>
+      <span class="precio">Q270.00</span>
+      <span class="envio-incluido">Envío incluido</span>
+    </div>
+
+    <div class="combo-card">
+      <h3>Trío de Manzana</h3>
+      <p>3 botellas de 500 ml</p>
+      <span class="precio">Q200.00</span>
+      <span class="envio-incluido">Envío incluido</span>
+    </div>
+
+    <div class="combo-card">
+      <h3>Combo Regalón</h3>
+      <p>
+        3 Manzana 1,100 ml<br>
+        3 Cúrcuma 500 ml<br>
+        3 Jengibre 500 ml<br>
+        3 Manzana 500 ml
+      </p>
+      <span class="precio">Q700.00</span>
+      <span class="envio-incluido">Envío incluido</span>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="precios-envios">
+  <h2><i class="#"></i> Precios y Envíos</h2>
+  <p class="subtitulo">Consulta nuestros precios actualizados y tarifas de envío a toda Guatemala.</p>
+
+  <div class="texto-precios">
+    <h3>Vinagre de Manzana Natural</h3>
+    <p>1,100 ml: <strong>Q125.00</strong> + envío<br>500 ml: <strong>Q60.00</strong> + envío</p>
+
+    <h3>Vinagre de Cúrcuma (500 ml)</h3>
+    <p><strong>Q70.00</strong> + envío</p>
+
+    <h3>Vinagre de Jengibre (500 ml)</h3>
+    <p><strong>Q70.00</strong> + envío</p>
+
+    <h3>Costos de Envío</h3>
+    <p>
+      Departamentos: <strong>Q40.00</strong><br>
+      Ciudad de Guatemala (zonas céntricas): <strong>Q30.00</strong><br>
+      Municipios (Mixco, CAES, Villa Nueva, etc.): <strong>Q35.00</strong>
+    </p>
+  </div>
+</section>
+
+
+
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-social">
+                <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+
+            <p class="footer-copy">© 2025 Nadie Como Tú. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/50212345678" class="whatsapp-float" target="_blank" aria-label="Contáctanos por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+
+    <!-- Coloca en el <head> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    function cerrarSesion() {
+  sessionStorage.removeItem("logueado");
+  window.location.href = "index.html";
+}
+<script>
+  function cerrarSesion() {
+    sessionStorage.removeItem("logueado");
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+
+</html>

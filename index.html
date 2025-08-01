@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nadie Como Tú</title>
+  <meta name="description"
+    content="Nadie Como Tú es una plataforma de entrenamiento en línea con clases en vivo, rutinas de gimnasio y programas de ejercicio diseñados para ayudarte a alcanzar tu mejor versión. Únete hoy.">
+  <meta name="keywords"
+    content="ejercicio, clases en vivo, entrenamiento online, gimnasio, fitness, nadie como tú, rutinas, entrenamientos">
+  <meta name="author" content="Nadie Como Tú">
+  <meta property="og:title" content="Nadie Como Tú - Clases en Vivo y Entrenamiento Online">
+  <meta property="og:description"
+    content="Entrena desde casa con clases en vivo y rutinas personalizadas. Vive tu mejor versión con Nadie Como Tú.">
+  <meta property="og:image" content="https://tusitio.com/img/preview.jpg">
+  <meta property="og:url" content="https://tusitio.com">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000">
+  <style>
+    .intro-screen {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+
+    .intro-logo {
+      width: 140px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+      }
+    }
+
+    .login-container {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9998;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+
+
+<body>
+  <!-- Animación inicial y login -->
+  <div class="intro-screen" id="introScreen">
+    <img src="imagenes/logo.webp" alt="Logo" class="intro-logo" />
+  </div>
+
+  <div id="loginContainer" class="login-container">
+    <iframe src="login.html" id="loginIframe"></iframe>
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const intro = document.getElementById("introScreen");
+      const login = document.getElementById("loginContainer");
+      const contenido = document.getElementById("contenidoPrincipal");
+  
+      const usuarioValido = sessionStorage.getItem("logueado") === "true";
+      const modoDesarrollo = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+  
+      // Si ya está logueado o estamos en modo desarrollo local
+      if (usuarioValido || modoDesarrollo) {
+        intro.style.display = "none";
+        login.style.display = "none";
+        contenido.style.display = "block";
+        return;
+      }
+  
+      // Mostrar animación de intro, luego login
+      setTimeout(() => {
+        intro.style.opacity = 0;
+        setTimeout(() => {
+          intro.style.display = "none";
+          login.style.display = "block";
+        }, 1000);
+      }, 3000);
+    });
+  </script>
+  
+
+
+
+  <div id="contenidoPrincipal" style="display: none;">
+    <!-- TODO el contenido actual de la web: header, hero, secciones, footer, etc -->
+
+    <section class="marquee-wrapper">
+      <a href="https://eurotard.com/v4/default.aspx?id=92" class="marquee-link">
+        <div class="marquee-content">
+          <div class="marquee-track">
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+            </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+            <span><span class="click-text">Descubre tu</span> - <span class="new-text">Mejor Versión</span>
+                </span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+
+    <!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION --><!-- BARRA NAVEGACION -->
+    <header class="navbar">
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="imagenes/logo.webp" alt="Nadie como tú Logo" class="logo-img" loading="lazy" />
+          </a>
+        </div>
+        <nav class="nav-links" id="nav-links">
+          <a href="productos.html">Productos</a>
+          <a href="galeria.html">Galeria</a>
+          <a href="live.html">En Vivo</a>
+          <a href="recetario.html">Recetario</a>
+          <a href="favoritos.html" class="nav-link">Favoritos ⭐</a>
+          <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+
+          <div class="social-icons mobile-socials">
+            <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+              aria-label="Visita nuestro canal de YouTube">
+              <i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+                class="fab fa-instagram"></i></a>
+          </div>
+        </nav>
+        <div class="social-icons desktop-socials">
+          <a href="https://www.youtube.com/tu_perfil" target="_blank" rel="noopener"
+            aria-label="Visita nuestro canal de YouTube">
+            <i class="fab fa-youtube"></i></a>
+          <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Sigue nuestro Instagram"><i
+              class="fab fa-instagram"></i></a>
+        </div>
+   
+        
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+          <div></div>
+          <div></div>
+          <div></div>
+        </button>
+      </div>
+      <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        function toggleMenu() {
+          navLinks.classList.toggle('open');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        hamburger.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+          }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          const isInside = navLinks.contains(e.target) || hamburger.contains(e.target);
+          if (!isInside) {
+            navLinks.classList.remove('open');
+          }
+        });
+      </script>
+    </header>
+
+
+
+
+
+    <!-- HERO COMPLETO --> <!-- HERO COMPLETO --> <!-- HERO COMPLETO -->
+    <section class="hero" id="inicio">
+      <video autoplay muted loop playsinline class="hero-video" poster="HERO/poster.jpg">
+        <source src="video/portada.mp4" type="video/mp4" />
+        <source src="video/portada.webm" type="video/webm" />
+        Tu navegador no soporta videos HTML5.
+      </video>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="titulo-imagen">
+          <img src="imagenes/frase.webp" alt="Nadie como tú">
+        </h1>
+        <p class="frase-final animate-fade-in">
+          Descubre tu mejor versión. <a href="formulario.html" class="btn-resaltado">Únete a nuestra comunidad</a>
+        </p>
+
+        <div class="countdown-wrapper hero-countdown">
+          <h2 class="countdown-title">
+            Próxima Clase: <span id="class-title-dynamic">Cargando...</span>
+          </h2>
+
+          <div id="timer" class="timer-grid">
+            <div class="time-box"><span id="days">00</span><small>días</small></div>
+            <div class="time-box"><span id="hours">00</span><small>h</small></div>
+            <div class="time-box"><span id="minutes">00</span><small>min</small></div>
+            <div class="time-box"><span id="seconds">00</span><small>seg</small></div>
+          </div>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-clases btn-ultima-clase" id="ultimaClaseBtn"
+            data-video="https://www.youtube.com/embed/VIDEO_DE_LA_CLASE" data-titulo="Clase de Ritmo"
+            data-nombre="Instructor: Ana Pérez" data-duracion="45 min">
+            Última Clase
+          </a>
+
+
+          <a href="live.html" class="btn btn-clases btn-ver-en-vivo">Ver en vivo</a>
+
+          <button onclick="abrirModalHorario()" class="btn btn-clases btn-horarios">
+            Ver Horarios
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const horarios = {
+        lunes: [
+          { hora: "06:20", clase: "Clase con Ariel" },
+          { hora: "18:00", clase: "Clase con Yeimi" }
+        ],
+        martes: [
+          { hora: "08:00", clase: "Full body con Yeimi" },
+          { hora: "18:00", clase: "Brazo y abdomen con Yeimi" }
+        ],
+        miércoles: [
+          { hora: "06:20", clase: "Clase con Ariel" },
+          { hora: "18:00", clase: "Barre con Leslie" }
+        ],
+        jueves: [
+          { hora: "08:00", clase: "Brazo y Abs con Leslie" },
+          { hora: "18:00", clase: "Full body con silla/caja" }
+        ],
+        viernes: [
+          { hora: "06:20", clase: "Clase con Ariel" },
+          { hora: "08:00", clase: "Clase con Leslie" }
+        ]
+      };
+
+      function getNextClass() {
+        const now = new Date();
+        const dias = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+        const hoyIndex = now.getDay();
+        const minutosAhora = now.getHours() * 60 + now.getMinutes();
+
+        for (let i = 0; i < 7; i++) {
+          const diaCheck = dias[(hoyIndex + i) % 7];
+          if (horarios[diaCheck]) {
+            for (const clase of horarios[diaCheck]) {
+              const [h, m] = clase.hora.split(":").map(Number);
+              const claseMin = h * 60 + m;
+              if (i > 0 || claseMin > minutosAhora) {
+                const fechaClase = new Date(now);
+                fechaClase.setDate(now.getDate() + i);
+                fechaClase.setHours(h, m, 0, 0);
+                return { ...clase, fecha: fechaClase };
+              }
+            }
+          }
+        }
+        return null;
+      }
+
+      function updateCountdown() {
+        const proximaClase = getNextClass();
+        if (!proximaClase) return;
+
+        const ahora = new Date();
+        const diferencia = proximaClase.fecha - ahora;
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = String(dias).padStart(2, "0");
+        document.getElementById("hours").textContent = String(horas).padStart(2, "0");
+        document.getElementById("minutes").textContent = String(minutos).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(segundos).padStart(2, "0");
+        document.getElementById("class-title-dynamic").textContent = `${proximaClase.clase} a las ${proximaClase.hora}`;
+
+        setTimeout(updateCountdown, 1000);
+      }
+
+      updateCountdown();
+    </script>
+
+
+    <div id="modalClase2" class="modal-clase">
+      <div class="modal-clase-content">
+        <button class="modal-clase-close" id="cerrarModalClase2">&times;</button>
+        <div class="modal-clase-header">
+          <h2 id="tituloClase2">Clase de Ritmo</h2>
+          <button id="agregarFavoritos2" class="btn-favorito">★ Agregar a Favoritos</button>
+        </div>
+        <p id="nombreInstructor2">Instructor: Ana Pérez</p>
+        <p id="duracionClase2">Duración: 45 min</p>
+        <div class="video-wrapper">
+          <iframe id="videoIframe2" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <script>
+      const ultimaClaseBtn = document.getElementById("ultimaClaseBtn");
+      const modalClase2 = document.getElementById("modalClase2");
+      const cerrarModal2 = document.getElementById("cerrarModalClase2");
+      const videoIframe2 = document.getElementById("videoIframe2");
+
+      ultimaClaseBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (sessionStorage.getItem("logueado") !== "true") {
+          window.location.href = "login.html";
+          return;
+        }
+
+        modalClase2.style.display = "block";
+        document.body.classList.add("modal-open");
+
+        document.getElementById("tituloClase2").textContent = this.dataset.titulo;
+        document.getElementById("nombreInstructor2").textContent = this.dataset.nombre;
+        document.getElementById("duracionClase2").textContent = "Duración: " + this.dataset.duracion;
+        videoIframe2.src = this.dataset.video;
+      });
+
+      cerrarModal2.addEventListener("click", function () {
+        modalClase2.style.display = "none";
+        document.body.classList.remove("modal-open");
+        videoIframe2.src = "";
+      });
+
+      window.addEventListener("click", function (e) {
+        if (e.target === modalClase2) {
+          modalClase2.style.display = "none";
+          document.body.classList.remove("modal-open");
+          videoIframe2.src = "";
+        }
+      });
+    </script>
+
+
+
+    <!-- MODAL HORARIOS SEGURO --> <!-- MODAL HORARIOS SEGURO --> <!-- MODAL HORARIOS SEGURO -->
+    <div id="modalHorarios" class="modal-horario" style="display:none;">
+      <div class="modal-horario-content">
+        <button class="modal-horario-close" onclick="cerrarModalHorario()" aria-label="Cerrar modal">&times;</button>
+        <h2>Horarios de Clases</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Día</th>
+              <th>Hora</th>
+              <th>Clase</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lunes</td>
+              <td>6:20 am</td>
+              <td>Clase con Ariel</td>
+            </tr>
+            <tr>
+              <td>Lunes</td>
+              <td>6:00 pm</td>
+              <td>Clase con Yeimi</td>
+            </tr>
+            <tr>
+              <td>Martes</td>
+              <td>8:00 am</td>
+              <td>Full body con Yeimi</td>
+            </tr>
+            <tr>
+              <td>Martes</td>
+              <td>6:00 pm</td>
+              <td>Brazo y abdomen con Yeimi</td>
+            </tr>
+            <tr>
+              <td>Miércoles</td>
+              <td>6:20 am</td>
+              <td>Clase con Ariel</td>
+            </tr>
+            <tr>
+              <td>Miércoles</td>
+              <td>6:00 pm</td>
+              <td>Barre con Leslie</td>
+            </tr>
+            <tr>
+              <td>Jueves</td>
+              <td>8:00 am</td>
+              <td>Brazo y Abs con Leslie</td>
+            </tr>
+            <tr>
+              <td>Jueves</td>
+              <td>6:00 pm</td>
+              <td>Full body con silla/caja</td>
+            </tr>
+            <tr>
+              <td>Viernes</td>
+              <td>6:20 am</td>
+              <td>Clase con Ariel</td>
+            </tr>
+            <tr>
+              <td>Viernes</td>
+              <td>8:00 am</td>
+              <td>Clase con Leslie</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      function abrirModalHorario() {
+        document.getElementById("modalHorarios").style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      function cerrarModalHorario() {
+        document.getElementById("modalHorarios").style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      window.addEventListener("click", function (e) {
+        const modal = document.getElementById("modalHorarios");
+        if (e.target === modal) {
+          cerrarModalHorario();
+        }
+      });
+
+      window.addEventListener("keydown", function (e) {
+        const modal = document.getElementById("modalHorarios");
+        if (e.key === "Escape") {
+          cerrarModalHorario();
+        }
+      });
+    </script>
+
+    <script>
+      const schedule = [
+        { day: "lunes", time: "06:20", title: "Clase con Ariel" },
+        { day: "lunes", time: "18:00", title: "Clase con Yeimi" },
+        { day: "martes", time: "08:00", title: "Full body con Yeimi" },
+        { day: "martes", time: "18:00", title: "Brazo y abdomen con Yeimi" },
+        { day: "miércoles", time: "06:20", title: "Clase con Ariel" },
+        { day: "miércoles", time: "18:00", title: "Barre con Leslie" },
+        { day: "jueves", time: "08:00", title: "Brazo y Abs con Leslie" },
+        { day: "jueves", time: "18:00", title: "Full body con silla/caja" },
+        { day: "viernes", time: "06:20", title: "Clase con Ariel" },
+        { day: "viernes", time: "08:00", title: "Clase con Leslie" }
+      ];
+
+      function getNextClass() {
+        const now = new Date();
+        const dayNames = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+        const todayIndex = now.getDay();
+        const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+        for (let i = 0; i < 7; i++) {
+          const checkDayIndex = (todayIndex + i) % 7;
+          const dia = dayNames[checkDayIndex];
+
+          const clasesHoy = schedule.filter(c => c.day === dia);
+          for (let clase of clasesHoy) {
+            const [h, m] = clase.time.split(":").map(Number);
+            const claseMin = h * 60 + m;
+
+            if (i > 0 || claseMin > nowMinutes) {
+              const fechaClase = new Date(now);
+              fechaClase.setDate(now.getDate() + i);
+              fechaClase.setHours(h, m, 0, 0);
+              return { ...clase, fecha: fechaClase };
+            }
+          }
+        }
+
+        return null;
+      }
+
+      function updateCountdown() {
+        const next = getNextClass();
+        if (!next) return;
+
+        const now = new Date();
+        const diff = next.fecha - now;
+
+        const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = String(dias).padStart(2, "0");
+        document.getElementById("hours").textContent = String(horas).padStart(2, "0");
+        document.getElementById("minutes").textContent = String(minutos).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(segundos).padStart(2, "0");
+
+        document.getElementById("class-title-dynamic").textContent =
+          `${next.title} a las ${next.time}`;
+
+        // Mostrar aviso si es en vivo ahora
+        const nowMinutes = now.getHours() * 60 + now.getMinutes();
+        const classMinutes = next.fecha.getHours() * 60 + next.fecha.getMinutes();
+        const isNowLive = now.toDateString() === next.fecha.toDateString() &&
+          nowMinutes >= classMinutes &&
+          nowMinutes < classMinutes + 60;
+
+        const aviso = document.getElementById("aviso-en-vivo");
+        if (aviso) aviso.style.display = isNowLive ? "block" : "none";
+
+        setTimeout(updateCountdown, 1000);
+      }
+
+      updateCountdown();
+    </script>
+
+
+
+
+
+    <!-- SECCIÓN MAESTROS COMPLETA --> <!-- SECCIÓN MAESTROS COMPLETA --> <!-- SECCIÓN MAESTROS COMPLETA --> 
+    <section class="maestros-section">
+      <div class="overlay"></div>
+      <div class="contenedor-maestros">
+        <h2 class="galeria-title">Nuestros Entrenadores</h2>
+        <p>No estás solo: ellos estarán contigo en cada repetición, salto y desafío para ayudarte a alcanzar tu mejor
+          versión.</p>
+
+        <div class="maestros-grid">
+          <div class="maestro-card">
+            <img src="imagenes/ariel.webp" alt="Laura Ramírez">
+            <h2>Barre y Stretch</h2>
+            <h3>Leslie</h3>
+            <p>Fuerza, control y flexibilidad en cada movimiento.</p>
+            <button class="btn-clases" data-clases="laura">Clases</button>
+          </div>
+          <div class="maestro-card">
+            <img src="imagenes/lesli.webp" alt="David Martínez">
+            <h2>Barre y FlexiStretch</h2>
+            <h3>Leslie Feldmar</h3>
+            <p>Activa, fortalece y equilibra tu cuerpo con movimientos conscientes y de bajo impacto.</p>
+            <button class="btn-clases" data-clases="david">Clases</button>
+          </div>
+          <div class="maestro-card">
+            <img src="imagenes/yeimi.webp" alt="Ana López">
+            <h2>Zumba y Baile Fitness</h2>
+            <h3>Ana López</h3>
+            <p>Profesora de danza y expresión corporal consciente.</p>
+            <button class="btn-clases" data-clases="ana">Clases</button>
+          </div>
+          <div class="maestro-card">
+            <img src="imagenes/yeimi.webp" alt="Ana López">
+            <h2>Zumba y Baile Fitness</h2>
+            <h3>Ana López</h3>
+            <p>Profesora de danza y expresión corporal consciente.</p>
+            <button class="btn-clases" data-clases="ana">Clases</button>
+          </div>
+        </div>
+
+        <div class="iconos-maestros">
+          <div class="icono-item">
+            <i class="fas fa-heartbeat"></i>
+            <h4>Bienestar Físico</h4>
+            <p>Guiamos cada persona a alcanzar su mejor versión física con pasión y experiencia.</p>
+          </div>
+          <div class="icono-item">
+            <i class="fas fa-brain"></i>
+            <h4>Salud Mental</h4>
+            <p>Nuestros maestros están comprometidos con el equilibrio emocional y mental de cada alumno.</p>
+          </div>
+          <div class="icono-item">
+            <i class="fas fa-users"></i>
+            <h4>Comunidad</h4>
+            <p>Fomentamos un espacio donde crecer, compartir y apoyarnos mutuamente.</p>
+          </div>
+          <div class="icono-item">
+            <i class="fas fa-dumbbell"></i>
+            <h4>Entrenamiento</h4>
+            <p>Ofrecemos rutinas personalizadas para todos los niveles de condición física.</p>
+          </div>
+          <div class="icono-item">
+            <i class="fa-solid fa-spa"></i>
+            <h4>Bienestar Integral</h4>
+            <p>Ofrecemos rutinas personalizadas para todos los niveles de condición física.</p>
+          </div>
+        </div>
+
+        <!-- TESTIMONIOS EXTENDIDOS -->
+        <div class="slider-wrapper">
+          <div class="slider-testimonios">
+            <div class="testimonio">
+              <img src="imagenes/1.webp" alt="Camila R." class="avatar-testimonio">
+              <p>"Nunca había tenido tanta motivación para entrenar. Los maestros son increíbles."</p>
+              <h4>- Camila R.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/2.webp" alt="Jorge M." class="avatar-testimonio">
+              <p>"Gracias a las clases en vivo, he mejorado mi salud y autoestima. ¡Los recomiendo 100%!"</p>
+              <h4>- Jorge M.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/3.webp" alt="Andrea T." class="avatar-testimonio">
+              <p>"La calidad de las clases y el apoyo que recibo aquí es inigualable."</p>
+              <h4>- Andrea T.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/1.webp" alt="Esteban L." class="avatar-testimonio">
+              <p>"Los entrenamientos me han ayudado a enfocarme y tener más energía cada día."</p>
+              <h4>- Esteban L.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/2.webp" alt="Sofía V." class="avatar-testimonio">
+              <p>"Siento que pertenezco a una comunidad que realmente se preocupa por mi progreso."</p>
+              <h4>- Sofía V.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/3.webp" alt="Raúl G." class="avatar-testimonio">
+              <p>"Cada clase es una nueva oportunidad para crecer física y mentalmente."</p>
+              <h4>- Raúl G.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/1.webp" alt="Marcela H." class="avatar-testimonio">
+              <p>"Los entrenadores son súper motivadores y las rutinas variadas. ¡Me encantan!"</p>
+              <h4>- Marcela H.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/2.webp" alt="Luis T." class="avatar-testimonio">
+              <p>"Desde que comencé, mi bienestar general ha mejorado muchísimo."</p>
+              <h4>- Luis T.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/3.webp" alt="Paola D." class="avatar-testimonio">
+              <p>"Una comunidad que se siente como familia. Aquí encontré mi motivación."</p>
+              <h4>- Paola D.</h4>
+            </div>
+            <div class="testimonio">
+              <img src="imagenes/1.webp" alt="Carlos N." class="avatar-testimonio">
+              <p>"Los horarios, los entrenadores y la calidad del contenido: todo excelente."</p>
+              <h4>- Carlos N.</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIN DE SECCIÓN MAESTROS -->
+
+
+    <!-- MODAL CLASES FUNCIONAL Y RESPONSIVO -->
+    <div id="modalClases" class="modal">
+      <div class="modal-content">
+        <button class="cerrar" onclick="cerrarModalClases()">&times;</button>
+
+        <!-- Video principal estilo YouTube -->
+        <div class="video-principal">
+          <video id="videoPrincipal" controls autoplay></video>
+          <div class="info-video">
+            <h3 id="tituloPrincipal"></h3>
+            <p id="descripcionPrincipal"></p>
+          </div>
+        </div>
+
+        <!-- Slider de videos anteriores -->
+        <div class="video-slider" id="videoSlider"></div>
+      </div>
+    </div>
+
+    <style>
+      .btn-favorito {
+        background-color: transparent;
+        border: 1px solid #ff00e1;
+        color: #ff00e1;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+      }
+
+      .btn-favorito:hover {
+        background-color: #ff00e1;
+        color: #fff;
+        transform: scale(1.05);
+      }
+    </style>
+
+<script>
+  const clasesPorMaestro = {
+    laura: {
+      ultimaClase: {
+        src: "videos/laura1.mp4",
+        titulo: "Clase en Vivo – Yoga Avanzado",
+        descripcion: "Transmisión más reciente con respiración y fuerza"
+      },
+      anteriores: [
+        { src: "videos/login.mp4", titulo: "Yoga para la mañana", descripcion: "Rutina suave de activación corporal" },
+        { src: "videos/laura3.mp4", titulo: "Estiramientos de espalda", descripcion: "Movilidad para columna y hombros" },
+        { src: "videos/laura4.mp4", titulo: "Yoga restaurativo", descripcion: "Posturas relajantes para terminar el día" },
+        { src: "videos/laura5.mp4", titulo: "Core & Equilibrio", descripcion: "Activación de abdomen profundo" },
+        { src: "videos/laura6.mp4", titulo: "Respiración consciente", descripcion: "Técnicas de calma y enfoque" }
+      ]
+    },
+    david: {
+      ultimaClase: {
+        src: "videos/david1.mp4",
+        titulo: "Funcional Cardio – En Vivo",
+        descripcion: "Alta intensidad para quemar grasa"
+      },
+      anteriores: [
+        { src: "videos/david2.mp4", titulo: "HIIT en casa", descripcion: "Entrena en poco espacio sin equipo" },
+        { src: "videos/david3.mp4", titulo: "Fuerza de tren superior", descripcion: "Rutina con mancuernas" },
+        { src: "videos/david4.mp4", titulo: "Cardio Tabata", descripcion: "Explosión de energía por intervalos" },
+        { src: "videos/david5.mp4", titulo: "Piernas + glúteos", descripcion: "Circuito de 30 minutos" },
+        { src: "videos/david6.mp4", titulo: "Funcional básico", descripcion: "Para todos los niveles" }
+      ]
+    },
+    ana: {
+      ultimaClase: {
+        src: "videos/ana1.mp4",
+        titulo: "Danza Consciente – En Vivo",
+        descripcion: "Clase de expresión libre y emocional"
+      },
+      anteriores: [
+        { src: "videos/ana2.mp4", titulo: "Ritmo y flow", descripcion: "Movimiento libre con bases latinas" },
+        { src: "videos/ana3.mp4", titulo: "Estilo urbano", descripcion: "Coreografía divertida y dinámica" },
+        { src: "videos/ana4.mp4", titulo: "Movimiento corporal", descripcion: "Conciencia postural" },
+        { src: "videos/ana5.mp4", titulo: "Improvisación guiada", descripcion: "Conexión mente-cuerpo" },
+        { src: "videos/ana6.mp4", titulo: "Dance Cardio", descripcion: "Sudar bailando" }
+      ]
+    }
+  };
+
+  const botones = document.querySelectorAll('.btn-clases');
+  const modal = document.getElementById('modalClases');
+  const cerrar = document.querySelector('.cerrar');
+  const videoPrincipal = document.getElementById('videoPrincipal');
+  const tituloPrincipal = document.getElementById('tituloPrincipal');
+  const descripcionPrincipal = document.getElementById('descripcionPrincipal');
+  const videoSlider = document.getElementById('videoSlider');
+
+  botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const maestro = boton.dataset.clases;
+      const datos = clasesPorMaestro[maestro];
+
+      if (datos) {
+        videoPrincipal.src = datos.ultimaClase.src;
+        videoPrincipal.load();
+        videoPrincipal.play();
+        tituloPrincipal.textContent = datos.ultimaClase.titulo;
+        descripcionPrincipal.textContent = datos.ultimaClase.descripcion;
+
+        videoSlider.innerHTML = '';
+
+        datos.anteriores.forEach(videoData => {
+          const container = document.createElement('div');
+          container.classList.add('video-item');
+
+          const vid = document.createElement('video');
+          vid.src = videoData.src;
+          vid.controls = false;
+          vid.muted = true;
+
+          vid.addEventListener('click', () => {
+            videoPrincipal.src = videoData.src;
+            videoPrincipal.load();
+            videoPrincipal.play();
+            tituloPrincipal.textContent = videoData.titulo;
+            descripcionPrincipal.textContent = videoData.descripcion;
+          });
+
+          const titulo = document.createElement('h4');
+          titulo.textContent = videoData.titulo;
+
+          const descripcion = document.createElement('p');
+          descripcion.textContent = videoData.descripcion;
+
+          const favBtn = document.createElement('button');
+          favBtn.textContent = '★ Favorito';
+          favBtn.classList.add('btn-favorito');
+          favBtn.addEventListener('click', () => {
+            const usuario_id = sessionStorage.getItem("usuario_id") || "anonimo";
+            const favorito = {
+              titulo: videoData.titulo,
+              descripcion: videoData.descripcion,
+              videoSrc: videoData.src
+            };
+
+            fetch("https://script.google.com/macros/s/AKfycbzrqYB0DwNvaWOYxjCjlomkSJvd2R0fgfoM5lUXm3wYK37ULDKxihRugMjeMp5tZItb4w/exec", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                tipo: "guardarFavorito",
+                usuario_id: usuario_id,
+                favorito: favorito
+              })
+            })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                alert("Agregado a Favoritos");
+              } else {
+                alert("Este video ya está en tus favoritos o hubo un error");
+              }
+            })
+            .catch(err => {
+              console.error("Error al guardar en favoritos:", err);
+              alert("Ocurrió un error al guardar");
+            });
+          });
+
+          container.appendChild(vid);
+          container.appendChild(titulo);
+          container.appendChild(descripcion);
+          container.appendChild(favBtn);
+          videoSlider.appendChild(container);
+        });
+
+        modal.style.display = 'block';
+      }
+    });
+  });
+
+  function cerrarModalClases() {
+    modal.style.display = 'none';
+    videoPrincipal.pause();
+  }
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      cerrarModalClases();
+    }
+  });
+</script>
+
+
+
+
+    <!-- PLANES Y MEMBRESÍAS --><!-- PLANES Y MEMBRESÍAS --><!-- PLANES Y MEMBRESÍAS -->
+    <section id="membresia" class="section precios-dark">
+      <h2 class="galeria-title">Comienza Hoy, Avanza a tu mejor versión.</h2>
+      <p class="subtitulo-principal">
+        Acceso exclusivo a clases, beneficios y más para impulsar tu progreso. Conviértete en la mejor versión de ti
+        mismo.
+      </p>
+
+      <div class="boton-membresia-container">
+        <a href="#planes" class="btn-membresia">Para más información</a>
+      </div>
+    </section>
+
+
+
+    <!-- FOOTER --><!-- FOOTER --><!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-social">
+          <a href="https://www.facebook.com/NadicomotubyYeymiEstrada" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/yeimiestradaa/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+
+        <p class="footer-copy">© 2025 Nadie Como Tú. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <a href="https://wa.me/50212345678" class="whatsapp-float" target="_blank" aria-label="Contáctanos por WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+      document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+          const item = button.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+    </script>
+
+<script>
+  function cerrarSesion() {
+    sessionStorage.removeItem("logueado");
+    window.location.href = "index.html";
+  }
+</script>
+
+
+</body>
+</div>
+
+</html>
