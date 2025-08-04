@@ -6,35 +6,104 @@
   <title>Acceso Zoom en Vivo</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="login.css" />
-
+  <style>
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: 'Raleway', sans-serif;
+      background: rgba(0, 0, 0, 0.421);
+    }
+    .video-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.3);
+    }
+    .center-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 1rem;
+    }
+    .login-container {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      color: white;
+      max-width: 400px;
+      width: 100%;
+    }
+    .login-container img {
+      width: 100px;
+      margin-bottom: 1rem;
+    }
+    input, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #ff00d4;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #c800a6;
+    }
+    .error-msg {
+      color: #ff8080;
+      font-size: 0.9rem;
+    }
+    .help-msg {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+    .help-msg a {
+      color: #ff00d4;
+      text-decoration: none;
+    }
+  </style>
 </head>
 
 <body>
-
   <!-- 🎥 Video de fondo -->
   <video class="video-bg" autoplay muted loop playsinline>
     <source src="VIDEOS/register.mp4" type="video/mp4" />
     Tu navegador no soporta la etiqueta de video.
   </video>
 
-  <!-- 💻 Contenido centrado -->
+  <!-- 💻 Formulario de acceso -->
   <div class="center-wrapper">
     <div class="login-container">
       <img src="imagenes/logo.webp" alt="Logo" />
       <h2>Accede a la transmisión</h2>
-      <input type="text" id="username" placeholder="Usuario" required autocomplete="username" />
-      <input type="password" id="password" placeholder="Contraseña" required autocomplete="current-password" />
+      <input type="text" id="username" placeholder="Usuario" required />
+      <input type="password" id="password" placeholder="Contraseña" required />
       <button onclick="login()">Entrar</button>
       <div class="error-msg" id="error"></div>
-      <div class="help-msg">¿No puedes ingresar? <a href="https://wa.me/50212345678" target="_blank">Comunícate aquí</a></div>
+      <div class="help-msg">
+        ¿No puedes ingresar? <a href="https://wa.me/50212345678" target="_blank">Comunícate aquí</a>
+      </div>
     </div>
   </div>
 
   <!-- 🔐 Script de login -->
   <script>
+    // Bloquear si abren login.html directamente
+    if (window.top === window.self) {
+      window.location.href = "index.html";
+    }
+
     async function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
       const errorMsg = document.getElementById("error");
 
       if (!username || !password) {
@@ -43,7 +112,7 @@
       }
 
       try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbzrqYB0DwNvaWOYxjCjlomkSJvd2R0fgfoM5lUXm3wYK37ULDKxihRugMjeMp5tZItb4w/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwq6CEtP6kuLG85w8QVW_Ludwjmx84mkI8Wyn12fCpagKb8OtIT7D2hD07jDdeToAst7g/exec", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -58,15 +127,16 @@
         if (result.success) {
           sessionStorage.setItem('logueado', 'true');
           sessionStorage.setItem('usuario_id', username);
-          window.location.href = "index.html";
+          // Enviar mensaje al iframe padre (index)
+          window.parent.postMessage("login-exitoso", "*");
         } else {
           errorMsg.textContent = "Usuario o contraseña incorrectos.";
         }
       } catch (error) {
+        console.error(error);
         errorMsg.textContent = "Error de conexión. Intenta más tarde.";
       }
     }
   </script>
-
 </body>
 </html>

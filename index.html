@@ -20,7 +20,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#ff00d4">
+
   <style>
     .intro-screen {
       position: fixed;
@@ -73,33 +74,46 @@
 
 
 <body>
-  <!-- Animación inicial y login -->
+ <!-- Animación inicial -->
   <div class="intro-screen" id="introScreen">
     <img src="imagenes/logo.webp" alt="Logo" class="intro-logo" />
   </div>
 
+  <!-- Login vía iframe -->
   <div id="loginContainer" class="login-container">
     <iframe src="login.html" id="loginIframe"></iframe>
   </div>
 
+  <!-- Contenido protegido -->
+  <div id="contenidoPrincipal" style="display: none;">
+    <!-- Aquí va todo tu contenido actual: hero, navbar, secciones, footer, etc. -->
+    <h1>Bienvenido a Nadie Como Tú</h1>
+    <button onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
   <script>
+    // Escuchar mensaje desde login.html
+    window.addEventListener("message", function (event) {
+      if (event.data === "login-exitoso") {
+        sessionStorage.setItem("logueado", "true");
+        document.getElementById("loginContainer").style.display = "none";
+        document.getElementById("contenidoPrincipal").style.display = "block";
+      }
+    });
+
     window.addEventListener("load", () => {
       const intro = document.getElementById("introScreen");
       const login = document.getElementById("loginContainer");
       const contenido = document.getElementById("contenidoPrincipal");
-  
+
       const usuarioValido = sessionStorage.getItem("logueado") === "true";
-      const modoDesarrollo = location.hostname === "localhost" || location.hostname === "127.0.0.1";
-  
-      // Si ya está logueado o estamos en modo desarrollo local
-      if (usuarioValido || modoDesarrollo) {
+
+      if (usuarioValido) {
         intro.style.display = "none";
-        login.style.display = "none";
         contenido.style.display = "block";
         return;
       }
-  
-      // Mostrar animación de intro, luego login
+
       setTimeout(() => {
         intro.style.opacity = 0;
         setTimeout(() => {
@@ -108,7 +122,13 @@
         }, 1000);
       }, 3000);
     });
+
+    function cerrarSesion() {
+      sessionStorage.removeItem("logueado");
+      window.location.reload();
+    }
   </script>
+
   
 
 
@@ -965,6 +985,15 @@
     window.location.href = "index.html";
   }
 </script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('✅ Service Worker registrado:', reg.scope))
+      .catch(err => console.error('❌ Error al registrar Service Worker:', err));
+  }
+</script>
+
 
 
 </body>
