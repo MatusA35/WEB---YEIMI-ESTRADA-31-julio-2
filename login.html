@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -106,7 +107,7 @@
           required
           autocomplete="current-password"
         />
-        <button onclick="login()">Entrar</button>
+        <button id="loginBtn" onclick="login()">Entrar</button>
         <div class="error-msg" id="error"></div>
         <div class="help-msg">
           ¿No puedes ingresar?
@@ -119,7 +120,6 @@
 
     <!-- 🔐 Script de login -->
     <script>
-      // Bloqueo si abren login.html directamente
       if (window.top === window.self) {
         window.location.href = "index.html";
       }
